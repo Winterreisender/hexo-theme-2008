@@ -1,0 +1,12 @@
+<main>
+    <article>
+        <%- page.content %>
+    </article>
+    
+    <nav class="tag">
+    标签:
+    <% page.tags.data.map(x=>x.name).forEach( (tag, i, array)=> { %>
+        <a href="/tags/<%= tag %>"><%- tag %></a>
+    <% }) %>
+    </nav>
+</main>

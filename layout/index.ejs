@@ -1,0 +1,8 @@
+<main>
+    <h1><%= config.title %></h1>
+
+    <% site.posts.forEach( (post)=>{ %>
+        <a href="<%- post.path %>"><%- post.title %></a> 
+        <br/>
+    <% }); %>
+</main>
