@@ -1,0 +1,18 @@
+<header>
+
+    <h1 class="glass-plate"> <img src="./asset/img/logo.svg" class="inline-icon" alt="logo" /> <%- config.title %>  </h1>
+
+    <% if(config.nav) { // 导航 %>
+    <nav class="glass-plate">
+      <% for(const nav of config.nav) { %>
+        <a href="<%- nav.url %>" class="link"><%- nav.name %></a> 
+      <% } %>
+    </nav>
+    <% } %>
+
+    <% // 公告或副标题 %>
+    <% config.notices && config.notices.forEach(({content}) => {%>
+      <%- content %>
+    <% }) %>
+
+</header>

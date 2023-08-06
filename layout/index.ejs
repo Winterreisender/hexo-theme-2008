@@ -1,8 +1,32 @@
-<main>
-    <h1><%= config.title %></h1>
+<body class="user-select-none">
+    <%- include("_partial/header.ejs") %>
+    <main class="glass-plate center-container">
 
-    <% site.posts.forEach( (post)=>{ %>
-        <a href="<%- post.path %>"><%- post.title %></a> 
-        <br/>
-    <% }); %>
-</main>
+        <div class="site-list">
+          <% // `{title,tags: {data :tags}}` is cool but not ergonomic, just use `tags.data`  %>
+          <% site.posts.forEach(({title, path, description, tags , date}) => { // 网站 %> 
+            <% const cardType = description ? 'large' : 'small' %>
+
+            <a href="<%= path %>" class="no-style site-card-<%= cardType %>-a">
+
+              <% if(cardType=='large') {%>
+                <div class="site-card-large">
+                  <h3 style="display: inline;"><span class="link"><%- title %></span></h3>
+                  <% tags.each((tag) => { %>
+                    <span><%= tag.name %></span>
+                  <% }); %>
+                  <p><%- description %> </p>
+                </div>
+              <% } %>
+
+              <% if(cardType=='small') {%>
+                <div class="site-card-small center-container">
+                  <h3><span class="link"><%- title %></span></h3>
+                </div>
+              <% } %>
+
+            </a>
+          <% }) %>
+        </div>
+    </main>
+</body>

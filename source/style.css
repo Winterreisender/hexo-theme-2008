@@ -1,0 +1,214 @@
+/* --------Global--------- */
+
+:root {
+  --primary-color: #57C3C2;
+  --secondary-color: #99CCCB;
+  --font-color: black;
+  --background-color: white;
+  --glass-plate-bg-color: #ffffffbf
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #57C3C2;
+    --secondary-color: #99CCCB;
+    --font-color: white;
+    --background-color: #202124;
+    --glass-plate-bg-color: #0000004f
+  }
+}
+
+@font-face {
+  font-family: "Default";
+  src: url("../asset/font/Default.woff2");
+}
+
+/* --------Atomic CSS--------- */
+
+.no-style,
+.no-style:hover {
+  all: unset;
+}
+
+.margin-0 {
+  margin: 0 !important;
+}
+
+.padding-0 {
+  padding: 0 !important;
+}
+
+.inline-icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.1em;
+}
+
+.user-select-none {
+  user-select: none;
+}
+
+.center-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-plate {
+  border-radius: .3em;
+  padding: .6em;
+  margin: 1vh 1vw;
+  backdrop-filter: blur(8px) saturate(150%);
+  background-color: var(--glass-plate-bg-color);
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.site-card-large-a {
+  grid-row-end: span 2;
+  grid-column-end: span 2;
+}
+
+.site-card-large-a:hover {
+  grid-row-end: span 2;
+  grid-column-end: span 2;
+}
+
+.site-card-large {
+  padding: 1em;
+  margin: .5em;
+  width: auto; /*计算方式: .site-card-small的width -> Grid ->  width*/
+  height: 6em;
+
+  border-radius: 5px;
+  background-color: var(--background-color);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  font-family: "Default";
+}
+
+.site-card-large :nth-child(1) {
+  margin-top: 0;
+}
+
+.site-card-small {
+  padding: .5em;
+  margin: .5em;
+  width: 10em;
+  height: 2em;
+
+  border-radius: 5px;
+  background-color: var(--background-color);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  font-family: "Default";
+}
+
+.site-card-small:hover, .site-card-large:hover {
+  transform: rotate(1deg);
+  box-shadow: 5px 5px 5px gray;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3),0 4px 6px -2px rgba(0, 0, 0, 0.15);
+}
+
+/* --------Element CSS--------- */
+
+body {
+  background-color: var(--primary-color);
+  background-image: url("../asset/img/background.webp");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: bottom left;
+  font-family: "Default", sans-serif;
+  color: var(--font-color);
+  position: relative;
+}
+
+/* 项目内的链接必须带有class="link", 但不能强求用户在header中的链接也带class */
+.link, header a 
+{
+  color: var(--font-color);
+  text-decoration: none;
+  padding: .1em;
+  
+  transition: all .2s ease-in;
+  background: linear-gradient(to bottom,transparent 45%, var(--primary-color) 0) no-repeat;
+  background-size: 100% 200%;
+  background-position: 0 0;  
+}
+
+.link:hover, header a:hover
+{
+  background-position: 0 100%;  
+  color: var(--background-color);
+}
+
+
+header,
+footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: end;
+  padding: .2em 1em;
+}
+
+footer {
+  justify-content: center;
+  align-items: start;
+}
+
+footer p {
+  margin: .5em 0;
+}
+
+header > :nth-child(1) {
+  margin-left: 0;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 1vh 1vw;
+  padding: 1.8em;
+}
+
+main > .site-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 12em);
+  grid-auto-flow: row dense;
+  justify-items: center;
+  justify-content: center;
+}
+
+form > input {
+  font-family: 'Default';
+  color: var(--font-color);
+  background: none;
+  border: none;
+  font-size: 1em;
+  padding: 0;
+
+  transition: all .2s ease-in;
+  background: linear-gradient(to bottom,transparent 45%, var(--primary-color) 0) no-repeat;
+  background-size: 100% 200%;
+  background-position: 0 0;  
+}
+
+form > input:focus-visible {
+  outline: none;
+  background-position: 0 100%;  
+  color: var(--background-color);
+}
+
+form > input::placeholder {
+  color: var(--font-color);
+}
+
+form > input:focus-visible::placeholder {
+  color: var(--background-color);
+}
